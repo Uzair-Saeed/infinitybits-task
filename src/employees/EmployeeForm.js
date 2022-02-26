@@ -44,13 +44,20 @@ const EmployeeForm = () => {
         if (current === null) {
             addEmployee({ ...employee, min: salary, max: salary });
         } else {
-            if (salary > current.max) {
+            let a = parseInt(salary), b = parseInt(current.max);
+            console.log(a >= b);
+            if (a >= b) {
+                console.log('max');
                 updateEmployee({ ...employee, max: salary });
             }
-            else if (salary < current.min) {
+            else if (a <= b) {
+                console.log('min');
                 updateEmployee({ ...employee, min: salary });
             }
-            else { updateEmployee(employee) };
+            else {
+                console.log('other');
+                updateEmployee({ ...employee, min: current.min, max: current.max })
+            };
         }
         clearAll();
     }
